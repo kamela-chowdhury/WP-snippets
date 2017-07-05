@@ -1,3 +1,6 @@
+<div class="page-tabed">
+<div class="container-fluid">
+
 <?php
     //Replace it with the id/slug/name(anything you want)
     if( in_category( 'photo-editing' ) ) {
@@ -13,3 +16,5 @@
         wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'page-tablist nav nav-tabs' ) );
     }
     ?>
+</div>
+ </div>
