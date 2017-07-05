@@ -1,0 +1,15 @@
+<?php
+    //Replace it with the id/slug/name(anything you want)
+    if( in_category( 'photo-editing' ) ) {
+        wp_nav_menu( array( 'theme_location' => 'tab-menu1','menu'=>'Tab Menu 1', 'menu_class' => 'page-tablist nav nav-tabs') );
+    } elseif( in_category( 'desktop-publishing' ) ) {
+        wp_nav_menu( array( 'theme_location' => 'tab-menu2','menu'=>'Tab Menu 2', 'menu_class' => 'page-tablist nav nav-tabs') );
+    }elseif( in_category( 'digital-marketing-web-development' ) ) {
+        wp_nav_menu( array( 'theme_location' => 'tab-menu3','menu'=>'Tab Menu 3', 'menu_class' => 'page-tablist nav nav-tabs') );
+    }elseif( in_category( 'about' ) ) {
+        wp_nav_menu( array( 'theme_location' => 'tab-menu4','menu'=>'Tab Menu 4', 'menu_class' => 'page-tablist nav nav-tabs') );
+    }
+     else {
+        wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'page-tablist nav nav-tabs' ) );
+    }
+    ?>
