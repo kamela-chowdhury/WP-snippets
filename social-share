@@ -1,0 +1,7 @@
+<p>Share 
+ <a href="http://www.facebook.com/sharer/sharer.php?u=<?php print(urlencode(get_permalink())); ?>&title=<?php print(urlencode(the_title())); ?>" class="share-icon share-fb" title="Share <?php the_title_attribute(); ?> on Facebbok" target="blank"></a>
+ <a href="http://twitter.com/intent/tweet?status=<?php print(urlencode(the_title())); ?>+<?php print(urlencode(get_permalink())); ?>" class="share-icon share-tweet" title="Share <?php the_title_attribute(); ?> on Twiiter" target="blank"></a>
+ <a href="https://plus.google.com/share?url=<?php print(urlencode(get_permalink())); ?>" class="share-icon share-gplus" title="Share <?php the_title_attribute(); ?> on Google Plus" target="blank"></a>
+ <a href="http://pinterest.com/pin/create/bookmarklet/?media=[MEDIA]&url=<?php print(urlencode(get_permalink())); ?>&is_video=false&description=<?php print(urlencode(the_title())); ?>" class="share-icon share-pin" title="Share <?php the_title_attribute(); ?> on Pinterest" target="blank"></a>
+ <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php print(urlencode(get_permalink())); ?>&title=<?php print(urlencode(the_title())); ?>&source=[SOURCE/DOMAIN]" class="share-icon share-in" title="Share <?php the_title_attribute(); ?> on Linked in" target="blank"></a>
+</p>
