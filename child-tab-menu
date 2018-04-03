@@ -18,3 +18,78 @@
     ?>
 </div>
  </div>
+
+
+<?php
+/**
+ * Template Name: Tabbed Page
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package _tk
+ */
+
+get_header();
+?>
+<main>						
+<?php while(have_posts()):the_post(); ?>
+ 	<section class="service-parent">
+		<div class="container-fluid">			
+			<!-- <h1 class="section-title" itemprop="headline"><?php the_title(); ?></h1> -->
+			<div class="row"><?php the_content();?></div>
+		</div>				
+	</section>
+<?php endwhile;
+$args = array(
+'post_parent' => $post->ID,
+'post_type' => 'page',
+'orderby' => 'menu_order'
+);
+$count = 0;
+$child_queryz = new WP_Query( $args );
+while ( $child_queryz->have_posts() ) : $child_queryz->the_post(); $count++;if($count % 2 == 0) : ?>
+		<section class="service-sec sec-dark">
+ 			<div class="container-fluid">
+ 				<h2 class="section-title" itemprop="headline"><?php the_title(); ?></h2>
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<?php if ( has_post_thumbnail() ) :	the_post_thumbnail('tab-thumb',array('class'=>' img-fluid'));else: ?>
+							<img src="<?php get_stylesheet_directory(); ?>assets/images/demo-featured-mage.jpg" class="img-fluid" itemprop="image">
+						<?php endif; ?>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="service-sec-txt" itemprop="text"><?php the_content();?></div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		<?php else: ?>
+		<section class="service-sec sec-lite"><div class="container-fluid">
+			<div class="container-fluid">
+ 				<h2 class="section-title" itemprop="headline"><?php the_title(); ?></h2>
+				<div class="row">
+					
+					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="service-sec-txt" itemprop="text"><?php the_content();?></div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<?php if ( has_post_thumbnail() ) :	the_post_thumbnail('tab-thumb',array('class'=>' img-fluid'));else: ?>
+							<img src="http://ecd.19a.mwp.accessdomain.com/wp-content/uploads/2017/05/MetrodeskDEMO.jpg" class="img-fluid" itemprop="image">
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</section>
+		<?php endif; endwhile;wp_reset_query(); ?>	
+ 
+<aside>
+<?php $field_name="page_parts"; $field_value = get_post_meta($post->ID, $field_name, true);echo do_shortcode($field_value);?>
+<!-- <div class="row"><a class="btn btn-default" href="#" title="Click here to get start with Metrodesk">Start My Project</a></div>	 -->
+
+</aside>
+</main>	
+<?php get_template_part('templates/features');get_footer(); ?>
