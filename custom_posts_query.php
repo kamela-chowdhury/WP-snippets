@@ -1,24 +1,10 @@
-$args = array(
-	'posts_per_page'   => $posts_per_page,
-	'category'         => '',
-	'orderby'          => $sort_by,
-	'order'            => $sort_order,
-	'post_type'        => 'services',
-	'post_status'      => 'publish'
-); 
-
-?> 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-			<?php
-		$query = new WP_Query($args); 
-	?>
-		<?php if ( $query->have_posts() ) { ?>
-			<?php
-			while ($query->have_posts()) {
-			global $post;
-			$query->the_post();
-			}}
-			wp_reset_postdata();
-			wp_reset_query(); 
-			?>
+<?php 
+    query_posts(array( 
+        'post_type' => 'portfolio',
+        'showposts' => 10 
+    ) );  
+?>
+<?php while (have_posts()) : the_post(); ?>
+        <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+        <p><?php echo get_the_excerpt(); ?></p>
+<?php endwhile;?>
